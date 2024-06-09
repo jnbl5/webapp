@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: gcr.io/cbd3354-systems/backend-app
+        env:
+        - name: DB_HOST
+          value: cbd3354-systems:northamerica-northeast2:jerome
+        - name: DB_NAME
+          value: myappdb
+        - name: DB_USER
+          value: jerome
+        - name: DB_PASSWORD
+          value: Lnx!2024
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  type: LoadBalancer  # Change the service type to LoadBalancer
+  selector:
+    app: backend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000

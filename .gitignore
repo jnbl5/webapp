@@ -1,0 +1,1 @@
+"logs\n*.log\nnpm-debug.log*\nnode_modules/\n.cache/\n*.json\n.env\ndist/\nbuild/\n.config/" 

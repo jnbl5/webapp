@@ -1,0 +1,6 @@
+steps:
+  # Build Docker images for the frontend and backend
+  - name: 'gcr.io/cbd3354-systems/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/frontend-ui:$SHORT_SHA', './frontend']
+  - name: 'gcr.io/cbd3354-systems/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/backend-app:$SHORT_SHA', './backend']
